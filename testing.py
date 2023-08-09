@@ -3,8 +3,13 @@ import pickle
 import streamlit as st
 
 
-# loading the saved model
-loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+try:
+    with open('trained_model.sav', 'rb') as model_file:
+        loaded_model = pickle.load(model_file)
+except FileNotFoundError:
+    print("Model file not found.")
+except Exception as e:
+    print("Error loading the model:", e)
 
 
 # creating a function for Prediction
