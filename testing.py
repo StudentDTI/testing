@@ -3,15 +3,8 @@ import pickle
 import streamlit as st
 
 
-try:
-    with open('trained_model.sav', 'rb') as model_file:
-        loaded_model = pickle.load(model_file)
-except FileNotFoundError:
-    print("Model file not found.")
-except Exception as e:
-    print("Error loading the model:", e)
-
-
+# loading the saved model
+loaded_model = pickle.load(open('trained_model', 'rb'))
 # creating a function for Prediction
 
 def diabetes_prediction(input_data):
@@ -67,9 +60,5 @@ def main():
         
     st.success(diagnosis)
     
-    
-    
-    
-    
-if __name__ == '__main__':
-    main()
+
+main()
